@@ -1,0 +1,182 @@
+
+$(document).ready(function () {
+    const $slider = $('#slider');
+    const slideWidth = 600;
+    const $slides = $slider.children();
+    const slideCount = $slides.length;
+    let currentIndex = 1;
+    let animating = false;
+
+    const $firstClone = $slides.first().clone();
+    const $lastClone = $slides.last().clone();
+
+    $slider.append($firstClone);
+    $slider.prepend($lastClone);
+
+    const totalSlides = slideCount + 2;
+
+    $slider.css('width', slideWidth * totalSlides + 'px');
+
+    $slider.css('transform', `translateX(-${slideWidth * currentIndex}px)`);
+
+    function updateSlide() {
+        if (animating) return;
+        animating = true;
+
+
+        let slideWidth;
+        if (window.innerWidth <= 600) {
+            slideWidth = 200;
+        } else {
+            slideWidth = 600;
+        }
+
+        $slider.css('transition', 'transform 0.5s ease');
+        $slider.css('transform', `translateX(-${slideWidth * currentIndex}px)`);
+
+        setTimeout(() => {
+            if (currentIndex === 0) {
+                $slider.css('transition', 'none');
+                currentIndex = slideCount;
+                $slider.css('transform', `translateX(-${slideWidth * currentIndex}px)`);
+            }
+            if (currentIndex === slideCount + 1) {
+                $slider.css('transition', 'none');
+                currentIndex = 1;
+                $slider.css('transform', `translateX(-${slideWidth * currentIndex}px)`);
+            }
+
+            animating = false;
+            updateIndicator();
+        }, 500);
+    }
+
+    function updateIndicator() {
+        let indicatorIndex = currentIndex - 1;
+
+        if (currentIndex === 0) {
+            indicatorIndex = slideCount - 1;
+        } else if (currentIndex === slideCount + 1) {
+            indicatorIndex = 0;
+        }
+
+        $('#indicator .list').removeClass('active');
+        $('#indicator .list').eq(indicatorIndex).addClass('active');
+
+
+        let translateX = 0;
+    if (window.innerWidth <= 600) {
+        translateX = 70 * indicatorIndex;
+    } else {
+        translateX = 290 * indicatorIndex;
+    }
+        $('.indicator-2 .active-bar').css('transform', `translateX(${translateX}px)`);
+
+    }
+
+    $('#next, #rwd-next').click(function () {
+        if (animating) return;
+        currentIndex++;
+        updateSlide();
+    });
+
+    $('#prev, #rwd-prev').click(function () {
+        if (animating) return;
+        currentIndex--;
+        updateSlide();
+    });
+
+    $('#indicator .list').each(function (index) {
+        $(this).click(function () {
+            if (animating) return;
+            currentIndex = index + 1;
+            updateSlide();
+        });
+    });
+
+    $('#indicator-2 .list').each(function (index) {
+        $(this).click(function () {
+            if (animating) return;
+            currentIndex = index + 1;
+            updateSlide();
+        });
+    });
+
+    updateIndicator();
+});
+
+
+
+
+
+let dts = document.querySelectorAll('dt');
+
+
+dts.forEach((dt) => {
+    dt.addEventListener('click', () => {
+        const clickedBox = dt.parentElement;
+        const clickedContent = dt.nextElementSibling;
+        const isOpen = clickedBox.classList.contains('show');
+
+        document.querySelectorAll('.box').forEach((box) => {
+            box.classList.remove('show');
+            box.querySelector('dd').style.height = '0px';
+        });
+
+        if (!isOpen) {
+            clickedBox.classList.add('show');
+            clickedContent.style.height = `${clickedContent.scrollHeight}px`;
+        }
+    });
+});
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const targets = document.querySelectorAll(".target");
+
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  targets.forEach((target) => {
+    observer.observe(target);
+  });
+});
+
+
+
+
+
+
+
+$(function () {
+  $('#hamburger').on('click', function () {
+    $('.RWD-header-box2').toggleClass('show');
+
+    if ($('.RWD-header-box2').hasClass('show')) {
+      $('.RWD-header-box2').css('display', 'block');
+    } else {
+      $('.RWD-header-box2').css('display', 'none');
+    }
+  });
+});
+
+$(function () {
+  $('#hamburger').on('click', function () {
+    $('.RWD-header-box2').slideToggle();
+  });
+});
