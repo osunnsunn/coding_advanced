@@ -130,7 +130,7 @@ dts.forEach((dt) => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const targets = document.querySelectorAll(".target");
+  const targets = document.querySelectorAll(".scroll");
 
   const observerOptions = {
     root: null,
@@ -155,18 +155,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 $(function () {
   $('#hamburger').on('click', function () {
-    $('.RWD-header-box2').toggleClass('show');
+    $('.header-box2').toggleClass('show');
 
-    if ($('.RWD-header-box2').hasClass('show')) {
-      $('.RWD-header-box2').css('display', 'block');
+    if ($('.header-box2').hasClass('show')) {
+      $('.header-box2').css('display', 'block');
     } else {
-      $('.RWD-header-box2').css('display', 'none');
+      $('.header-box2').css('display', 'none');
     }
   });
 });
 
 $(function () {
   $('#hamburger').on('click', function () {
-    $('.RWD-header-box2').slideToggle();
+    $('.header-box2').slideToggle();
   });
 });

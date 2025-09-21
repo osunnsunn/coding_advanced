@@ -9,7 +9,6 @@ ul, ol, li, dl, dt, dd, img, form, table, tr, th, td {
 	font-weight: normal;
 	font-size: 100%;
 	text-align: left;
-	list-style-type: none;
 	border-collapse: collapse;
 }
 
@@ -37,7 +36,7 @@ body {
 
 /* ヘッダー */
 
-.header{
+.header-block{
 	width: 100%;
   background-color: lightgray;
 	display: flex;
@@ -48,18 +47,18 @@ body {
 	font-size: 30px;
 	font-weight: bold;
 }
-.header h1{
+.header-block h1{
 	padding: 5px 10px;
 }
-.header nav{
+.header-block nav{
 	padding: 5px 10px;
 }
-.header ul{
+.header-block ul{
 	display: flex;
 	gap: 20px;
   align-items: center;
 }
-.header a{
+.header-block a{
 	color: black;
 }
 .header-form{
@@ -72,13 +71,13 @@ body {
 	border: 1px solid #e5e5e5;
 	border-radius: 5px;
 }
-.botann {
+.search {
 	height: 40px;
 	padding: 10px;
 	border: 1px solid #e5e5e5;
 	border-radius: 5px;
 }
-.RWD-header-box2{
+.header-box2{
   display: none;
 }
 
@@ -109,7 +108,7 @@ body {
   flex-shrink: 0;
 }
 
-.RWD-slide-btn{
+.slide-btn-block{
   display: none;
 }
 
@@ -220,6 +219,10 @@ dd{
   transition-duration: 0.4s;
   font-size:  16px;
 }
+.box ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
 .box ul li{
 	margin-bottom: 16px;
 }
@@ -229,13 +232,13 @@ dd{
 	transform: translateY(0);
 }
 
-.target {
+.scroll {
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 1s, transform 1s;
 }
 
-.target.visible {
+.scroll.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -339,10 +342,10 @@ dd{
 
   /* ヘッダー */
   
-  .header h1{
+  .header-block h1{
 	  padding: 5px 0 0 1px;
   }
-  .RWD-header{
+  .hamburger{
     width: 60px;
     height: 50px;
     border: 2px solid #ffc7af;
@@ -362,23 +365,23 @@ dd{
     margin: 1px auto;
   }
   
-  .RWD-header-box1{
+  .header-box1{
     display: none;
   }
   
-  .RWD-header-box2{
+  .header-box2{
     display:none;
     height: auto;
     background-color: #e5e5e5; 
   }
-  .RWD-header-box2.show {
+  .header-box2.show {
     max-height: 500px;
     opacity: 1;
   }
-  .RWD-header-box2 a{
+  .header-box2 a{
     color: black;
   }
-  .RWD-header-box2 li{
+  .header-box2 li{
     padding: 14px 0 0 1px;
   }
 
@@ -391,7 +394,7 @@ dd{
 
   /* スライダー */
 
-  .RWD-slide-btn{
+  .slide-btn-block{
     display: block;
     position: relative;
   }
