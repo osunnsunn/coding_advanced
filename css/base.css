@@ -86,7 +86,8 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-.header-title{
+
+.header-title {
     font-size: 30px;
     font-weight: bold;
 }
@@ -255,7 +256,6 @@ body {
 
 .box {
     margin-bottom: 5px;
-    /* border-bottom: 1px solid #ccc; */
 }
 
 .box-title {
@@ -287,6 +287,17 @@ body {
 }
 
 /* コンテナ */
+
+.scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 .container-2 {
     margin: 0;
