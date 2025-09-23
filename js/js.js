@@ -78,7 +78,7 @@ $(document).ready(function () {
     $('.indicator-2 .active-bar').css('transform', `translateX(${translateX}px)`);
   }
     
-  $('#next, #rwd-next').click(function () {
+  $('#next, #rwd-next').click(() => {
     if (animating) return;
     currentIndex++;
     updateSlide();
@@ -109,22 +109,22 @@ $(document).ready(function () {
 });
 
 
-let dts = document.querySelectorAll('dt');
+document.querySelectorAll('.box-title').forEach(header => {
+  header.addEventListener('click', () => {
+    const faqItem = header.parentElement;
+    const content = faqItem.querySelector('.box-content');
+    const isOpen = faqItem.classList.contains('open');
 
-dts.forEach((dt) => {
-  dt.addEventListener('click', () => {
-    const clickedBox = dt.parentElement;
-    const clickedContent = dt.nextElementSibling;
-    const isOpen = clickedBox.classList.contains('show');
-    
-    document.querySelectorAll('.box').forEach((box) => {
-      box.classList.remove('show');
-      box.querySelector('dd').style.height = '0px';
+    // 全て閉じる
+    document.querySelectorAll('.box').forEach(item => {
+      item.classList.remove('open');
+      item.querySelector('.box-content').style.height = '0px';
     });
-    
+
+    // クリックしたものだけ開く
     if (!isOpen) {
-      clickedBox.classList.add('show');
-      clickedContent.style.height = `${clickedContent.scrollHeight}px`;
+      faqItem.classList.add('open');
+      content.style.height = content.scrollHeight + 'px';
     }
   });
 });
