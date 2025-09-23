@@ -115,13 +115,11 @@ document.querySelectorAll('.box-title').forEach(header => {
     const content = faqItem.querySelector('.box-content');
     const isOpen = faqItem.classList.contains('open');
 
-    // 全て閉じる
     document.querySelectorAll('.box').forEach(item => {
       item.classList.remove('open');
       item.querySelector('.box-content').style.height = '0px';
     });
 
-    // クリックしたものだけ開く
     if (!isOpen) {
       faqItem.classList.add('open');
       content.style.height = content.scrollHeight + 'px';
