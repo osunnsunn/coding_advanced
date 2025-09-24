@@ -98,13 +98,6 @@ $(document).ready(function () {
     });
   });
     
-  $('#indicator-2 .list').each(function (index) {
-    $(this).click(function () {
-      if (animating) return;
-      currentIndex = index + 1;
-      updateSlide();
-    });
-  });
   updateIndicator();
 });
 
@@ -147,19 +140,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   targets.forEach((target) => {
     observer.observe(target);
-  });
-});
-
-
-$(function () {
-  $('#hamburger').on('click', function () {
-    $('.header-box2').toggleClass('show');
-
-    if ($('.header-box2').hasClass('show')) {
-      $('.header-box2').css('display', 'block');
-    } else {
-      $('.header-box2').css('display', 'none');
-    }
   });
 });
 
